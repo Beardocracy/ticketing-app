@@ -1,7 +1,22 @@
 apiVersion: skaffold/v4beta10
 kind: Config
+manifests:
+  rawYaml:
+    - ./infra/k8s/*
+deploy:
+  kubectl: { }
 build:
+  local:
+    push: false
   artifacts:
+    - image: tbearden/client
+      context: client
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "**/*.ts"
+            dest: .
     - image: tbearden/auth
       context: auth
       sync:
@@ -10,10 +25,4 @@ build:
             dest: .
       docker:
         dockerfile: Dockerfile
-  local:
-    push: false
-manifests:
-  rawYaml:
-    - ./infra/k8s/*
-deploy:
-  kubectl: {}
+
