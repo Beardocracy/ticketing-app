@@ -5,7 +5,7 @@ const LandingPage = ({currentUser}) => {
     console.log('I am in the component', currentUser);
     return (
         <div>
-
+            {currentUser && <p>You are signed in.</p>}
             <h1>Landing Page</h1>
         </div>
     );
@@ -18,7 +18,8 @@ const LandingPage = ({currentUser}) => {
  * or browser, I'm checking to see where we are.
  */
 LandingPage.getInitialProps = async (context) => {
-    const { data } = await buildClient(context).get('/api/users/currentuser')
+    const client = buildClient(context);
+    const { data } = await client.get('/api/users/currentuser');
 
     return data;
 };
