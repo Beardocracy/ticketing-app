@@ -4,10 +4,7 @@ import jwt from 'jsonwebtoken';
 import {User} from '../models/user';
 import "express-async-errors";
 
-import {validateRequest} from "../middlewares/validate-request";
-import {RequestValidationError} from "../errors/request-validation-error";
-import {DatabaseConnectionError} from "../errors/database-connection-error";
-import {BadRequestError} from "../errors/bad-request-error";
+import {validateRequest, BadRequestError} from "@tbearden-dev/common";
 
 const router = express.Router();
 
