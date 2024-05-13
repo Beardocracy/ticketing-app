@@ -1,6 +1,6 @@
-import express, { Request, Response } from 'express';
-import { NotFoundError } from '@tbearden-dev/common';
-import { Ticket } from '../models/ticket';
+import express, {Request, Response} from 'express';
+import {NotFoundError} from '@tbearden-dev/common';
+import {Ticket} from '../models/ticket';
 
 const router = express.Router();
 
@@ -14,4 +14,4 @@ router.get('/api/tickets/:id', async (req: Request, res: Response) => {
     res.send(ticket);
 });
 
-export { router as showTicketRouter };
+export {router as showTicketRouter};
